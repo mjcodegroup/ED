@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
         width:'100%'
     },
 
+    mainSocial:{
+
+    },
+
     header:{
         position:'absolute',
         width: Dimensions.get('window').width,
@@ -140,7 +144,65 @@ const styles = StyleSheet.create({
         top:109,
         left: 180,
         borderRadius: 1
+    },
+
+    appTitle:{
+       flexDirection:'row'
+    },
+    app:{
+        width: 50,
+        height: 25,
+        left: 34,
+        top: 197,
+        fontSize:24,
+        lineHeight:25,
+        textAlign:'center',
+        color:'#FFFFFF'
+    },
+
+    appObjectif:{
+        width: 85,
+        height: 25,
+        left: 180,
+        top: 197,
+        fontSize:24,
+        lineHeight:25,
+        textAlign:'center',
+        color:'#FFFFFF'
+    },
+
+    whatsapp:{
+        flexDirection:"row"
+    },
+    whatsBox:{
+        position:'absolute',
+        width: 62,
+        height: 40,
+        left: 22,
+        top: 274,
+        borderRadius:10,
+        backgroundColor:'rgba(196, 196, 196, 0.6)',
+    },
+    whatsLogo:{
+        position:'absolute',
+        width: 31,
+        height: 32,
+        left: 37,
+        top: 277,
+    },
+
+    whatsDescription:{
+
+    },
+    allInputs:{
+        position:'absolute',
+        width: 175,
+        height: 240,
+        left: 164,
+        top: 253,
     }
+
+
 })
 
 export default styles;

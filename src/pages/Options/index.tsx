@@ -1,88 +1,110 @@
-import React, { useState} from "react";
-import {View, Text, ImageBackground,Dimensions, StatusBar, TextInput} from "react-native";
+import React, {Component} from "react";
+import {View, Text, ImageBackground,Dimensions, Image, TextInput} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-import {RectButton} from "react-native-gesture-handler";
+import {RectButton, TouchableOpacity} from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "./style";
 
-const Options = () => {
-    const navigation = useNavigation();
-    const [ mobile, setMobile ] = useState(true);
-    const [ apps, setApps ] = useState(false);
+const initialState = {
+    mobile:true,
+    apps:false
+}
 
-    function handleMobile() {
-        setMobile(true)
-        setApps(false)
+class Options extends Component<any, any>{
+
+    state = { ...initialState }
+
+    showMobileOption(){
+        this.setState({mobile:true});
+        this.setState({apps:false});
     }
 
-    function handleContinue(){
-        navigation.goBack();
+    showAppsOption(){
+        this.setState({apps:true});
+        this.setState({mobile:false});
     }
 
-    function handleApps() {
-        setApps(true)
-        setMobile(false)
-    }
-    return(
-        <ImageBackground
-            source={require('../../assets/loader.png')}
-            style={styles.container}
-            imageStyle={{ width:Dimensions.get('window').width, height:Dimensions.get('window').height }}
-        >
-            <View style={ styles.header} />
-            <StatusBar translucent backgroundColor='transparent'/>
+    render(){
+        return (
+            <ImageBackground
+                source={require('../../assets/loader.png')}
+                style={styles.container}
+                imageStyle={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}
+            >
+                <View style={styles.header}/>
                 <View>
                     <LinearGradient
-                        colors={['#464444','rgba(196, 196, 196, 0)']}
+                        colors={['#464444', 'rgba(196, 196, 196, 0)']}
                         style={styles.optionButton}
                     >
-                        <Text style={styles.startText}>Mobile</Text>
+                        <RectButton onPress={this.showMobileOption.bind(this)}>
+                            <Text style={styles.startText}>Mobile</Text>
+                        </RectButton>
                     </LinearGradient>
 
                     <LinearGradient
-                        colors={['#C4C4C4','rgba(196, 196, 196, 0)']}
+                        colors={['#C4C4C4', 'rgba(196, 196, 196, 0)']}
                         style={styles.optionButtonApp}
                     >
-                        <Text style={styles.startText}>Application</Text>
-                    </LinearGradient>
-                </View>
-
-            <View>
-                <Text style={styles.objectif}>Objectif</Text>
-
-                <View  style={styles.main}>
-                    <View style={styles.quotBox}>
-                        <Text style={ styles.inputLabelQuot}>Quotidien </Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder='ex:5H'
-                        />
-                    </View>
-
-                    <View style={styles.hebdoBoxBox}>
-                        <Text style={ styles.inputLabelHebd}>Hebdomadaire </Text>
-                        <TextInput
-                            style={styles.inputHebd}
-                            placeholder='ex:35H'
-                        />
-                    </View>
-                </View>
-
-                <View>
-                    <LinearGradient
-                        colors={['#269300','#37D300']}
-                        style={styles.startButton}
-                    >
-                        <RectButton
-                            onPress={handleContinue}
-                        >
-                             <Text style={styles.startText}>CONTINUEZ</Text>
+                        <RectButton onPress={this.showAppsOption.bind(this)}>
+                            <Text style={styles.startText}>Applications</Text>
                         </RectButton>
                     </LinearGradient>
                 </View>
-            </View>
-        </ImageBackground>
-    );
+
+                <View>
+                    { this.state.mobile ? (
+                        <View style={styles.main}>
+                            <Text style={styles.objectif}>Objectif</Text>
+                            <View style={styles.quotBox}>
+                                <Text style={styles.inputLabelQuot}>Quotidien </Text>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder='ex:5H'
+                                />
+                            </View>
+
+                            <View style={styles.hebdoBoxBox}>
+                                <Text style={styles.inputLabelHebd}>Hebdomadaire </Text>
+                                <TextInput
+                                    style={styles.inputHebd}
+                                    placeholder='ex:35H'
+                                />
+                            </View>
+                        </View>
+                        ) :
+                        <View style={styles.container}>
+                            <View style={styles.appTitle}>
+                                <Text style={styles.app}>App</Text>
+                                <Text style={styles.appObjectif}>Objectif</Text>
+                            </View>
+
+                            <View style={styles.whatsapp}>
+                                <View style={styles.whatsBox}>
+                                    <Image style={styles.whatsLogo} source={require('../../assets/whatsappLogo.png')} />
+                                </View>
+                                <TextInput style={styles.whatsDescription}/>
+                            </View>
+                        </View>
+                    }
+                </View>
+
+                <View>
+                    <LinearGradient
+                        colors={['#269300', '#37D300']}
+                        style={styles.startButton}
+                    >
+                        <RectButton
+                            onPress={()=>{}}
+                        >
+                            <Text style={styles.startText}>CONTINUEZ</Text>
+                        </RectButton>
+                    </LinearGradient>
+                </View>
+
+            </ImageBackground>
+        );
+    }
 }
 
 export default Options;

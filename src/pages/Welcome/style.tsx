@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from "react-native";
+import {   } from "expo";
 
 const styles = StyleSheet.create({
     container: {
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
         fontSize: 48,
         lineHeight: 51,
         color: '#FFFFFF',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily:"Inter-SemiBoldItalic"
 
     },
 

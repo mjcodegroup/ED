@@ -17,8 +17,6 @@ const Register = () => {
             imageStyle={{ width:Dimensions.get('window').width, height:Dimensions.get('window').height }}
         >
             <View style={ styles.header} />
-            <StatusBar translucent backgroundColor='transparent'/>
-
             <View  >
                 <Text style={ styles.inputLabel}>Nom </Text>
                 <TextInput
