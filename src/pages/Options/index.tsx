@@ -34,12 +34,13 @@ class Options extends Component<any, any>{
                 <View style={styles.header}/>
                 <View>
                     <LinearGradient
-                        colors={['#464444', 'rgba(196, 196, 196, 0)']}
-                        style={styles.optionButton}
+                      colors={['#464444', 'rgba(196, 196, 196, 0)']}
+                      style={styles.optionButton}
                     >
                         <RectButton onPress={this.showMobileOption.bind(this)}>
                             <Text style={styles.startText}>Mobile</Text>
                         </RectButton>
+
                     </LinearGradient>
 
                     <LinearGradient

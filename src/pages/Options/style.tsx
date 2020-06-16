@@ -184,11 +184,11 @@ const styles = StyleSheet.create({
         backgroundColor:'rgba(196, 196, 196, 0.6)',
     },
     whatsLogo:{
-        position:'absolute',
+        position:'relative',
         width: 31,
         height: 32,
-        left: 37,
-        top: 277,
+        left: 15,
+        top: 5,
     },
 
     whatsDescription:{
